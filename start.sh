@@ -16,6 +16,14 @@ tmux select-pane -t agents:0.0
 tmux select-layout -t agents main-vertical
 tmux resize-pane -t agents:0.0 -x 117
 
+# ペインタイトル設定
+tmux set-window-option -t agents pane-border-status top
+tmux set-window-option -t agents pane-border-format "#{pane_title}"
+tmux select-pane -t agents:0.0 -T "orchestrator"
+tmux select-pane -t agents:0.1 -T "writer"
+tmux select-pane -t agents:0.2 -T "reviewer"
+tmux select-pane -t agents:0.3 -T "editor"
+
 # 各ペインで起動
 tmux send-keys -t agents:0.0 "claude" Enter
 tmux send-keys -t agents:0.1 "cd writer && claude" Enter

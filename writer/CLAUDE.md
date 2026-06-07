@@ -11,10 +11,16 @@
 
 3. 記事を `shared/<テーマ名>/<サブテーマ名>.md` として保存する
 
-4. orchestratorに完了を通知する際、以下を添える
+4. 以下の内容を `shared/<テーマ名>/<サブテーマ名>_memo.md` として保存する
    - 執筆上の主な判断・構成の意図
    - 迷った箇所・自信がない部分
    - 情報不足で簡略化した箇所
 
-   tmux send-keys -t agents:0.0 "writer完了: shared/<テーマ名>/<サブテーマ名>.md
-   メモ: <判断・迷い・情報不足の簡潔なサマリー>" Enter
+   フォーマット:
+   ```
+   ## Writer メモ
+   <内容>
+   ```
+
+5. orchestratorに完了を通知する
+   tmux send-keys -t agents:0.0 "writer完了: shared/<テーマ名>/<サブテーマ名>.md" Enter
